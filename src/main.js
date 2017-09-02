@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import VueResource from 'vue-resource'
 import $ from 'jquery'
 import 'font-awesome/css/font-awesome.min.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -12,7 +13,9 @@ import 'admin-lte/dist/css/skins/_all-skins.min.css'
 import 'admin-lte/dist/js/app'
 import 'admin-lte/dist/js/adminlte'
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
+Vue.use(VueResource);
+
 
 /* eslint-disable no-new */
 new Vue({
@@ -20,4 +23,4 @@ new Vue({
   router,
   template: '<App/>',
   components: {App}
-})
+});

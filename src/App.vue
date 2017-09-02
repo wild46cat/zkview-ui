@@ -19,7 +19,7 @@
               <li><a data-toggle="modal" data-target="#connectionModal"> 连接zk</a></li>
               <li v-show="!conflag"><a><i class="fa fa-close" style="color: darkred"></i></a></li>
               <li v-show="conflag"><a><i class="fa fa-check-circle-o" style="color: yellow"></i></a></li>
-              <li v-show="!conflag"><a><i class="fa fa-eye" style="color: white"></i></a></li>
+              <li v-show="!conflag"><a @click="testget"><i class="fa fa-eye" style="color: white"></i></a></li>
             </ul>
             </ul>
           </div><!-- /.navbar-collapse -->
@@ -96,10 +96,18 @@
         $('#connectionModal').modal('hide');
       },
       testget: function () {
-
+        this.$http.get('http://www.baidu.com').then(function (res) {
+          alert(res.body);
+        }, function () {
+          alert('请求失败处理');
+        });
       },
       testpost: function () {
-
+        this.$http.post('http://www.baidu.com').then(function (res) {
+          alert(res.body);
+        }, function () {
+          alert('请求失败处理');
+        });
       }
     }
   }

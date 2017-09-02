@@ -59,7 +59,7 @@
               <form role="form">
                 <div class="box-body">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">请输入zk连接字符串</label>
+                    <label>请输入zk连接字符串</label>
                     <input type="text" v-model="connectionString" class="form-control" placeholder="请输入zk连接字符串"/>
                   </div>
                 </div>
@@ -87,7 +87,7 @@
       return {
         msg: 'Welcome to Your Vue.js App',
         conflag: false,
-        connectionString:''
+        connectionString: '192.168.0.99:2181'
       }
     },
     methods: {
@@ -95,10 +95,10 @@
         //关闭模态框
         $('#connectionModal').modal('hide');
       },
-      testget:function () {
+      testget: function () {
 
       },
-      testpost:function () {
+      testpost: function () {
 
       }
     }

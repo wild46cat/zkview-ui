@@ -92,12 +92,24 @@
     },
     methods: {
       test: function () {
-        //关闭模态框
-        $('#connectionModal').modal('hide');
+        this.$http.get('http://192.168.0.108:7878/zkview/zk/connect?connectionString=' + this.connectionString).then(function (res) {
+          var data = res.body;
+          this.conflag = data.flag;
+          console.log(data.nodes);
+          //关闭模态框
+          $('#connectionModal').modal('hide');
+        }, function () {
+          alert('请求失败处理');
+          //关闭模态框
+          $('#connectionModal').modal('hide');
+        });
       },
       testget: function () {
-        this.$http.get('http://www.baidu.com').then(function (res) {
+        this.$http.get('http://192.168.0.108:7878/zkview/zk/connect?connectionString=' + '192.168.0.99:2181').then(function (res) {
           alert(res.body);
+          console.error(res.body);
+          var data = res.body;
+          this.conflag = data.flag;
         }, function () {
           alert('请求失败处理');
         });

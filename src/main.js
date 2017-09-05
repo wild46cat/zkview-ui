@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import VueResource from 'vue-resource'
+import staticconfig from '../static/config/config'
 import $ from 'jquery'
 import 'font-awesome/css/font-awesome.min.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -15,6 +16,7 @@ import 'admin-lte/dist/js/adminlte'
 
 Vue.config.productionTip = false;
 Vue.use(VueResource);
+Vue.use(staticconfig);
 
 
 /* eslint-disable no-new */

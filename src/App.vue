@@ -20,6 +20,7 @@
               <li v-show="!conflag"><a><i class="fa fa-close" style="color: darkred"></i></a></li>
               <li v-show="conflag"><a><i class="fa fa-check-circle-o" style="color: yellow"></i></a></li>
               <li v-show="!conflag"><a @click="testget"><i class="fa fa-eye" style="color: white"></i></a></li>
+              <li @click="test"><a>test</a></li>
             </ul>
             </ul>
           </div><!-- /.navbar-collapse -->
@@ -68,7 +69,7 @@
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">取消
               </button>
-              <button type="button" class="btn btn-primary" @click="test">
+              <button type="button" class="btn btn-primary" @click="connect">
                 连接
               </button>
             </div>
@@ -82,45 +83,40 @@
 <script>
   export default {
     name: 'app',
-    mounted: {},
     data () {
       return {
         msg: 'Welcome to Your Vue.js App',
         conflag: false,
-        connectionString: '192.168.0.99:2181'
+        connectionString: '192.168.0.66:2181'
       }
     },
     methods: {
       test: function () {
-        this.$http.get('http://192.168.0.108:7878/zkview/zk/connect?connectionString=' + this.connectionString).then(function (res) {
-          var data = res.body;
-          this.conflag = data.flag;
-          console.log(data.nodes);
-          //关闭模态框
-          $('#connectionModal').modal('hide');
-        }, function () {
-          alert('请求失败处理');
-          //关闭模态框
-          $('#connectionModal').modal('hide');
-        });
+        alert(this.GLOBAL.BASE_URL);
+        alert(this.$ajax.defaults.baseURL);
       },
       testget: function () {
-        this.$http.get('http://192.168.0.108:7878/zkview/zk/connect?connectionString=' + '192.168.0.99:2181').then(function (res) {
-          alert(res.body);
-          console.error(res.body);
-          var data = res.body;
+        this.$ajax({
+          method: 'get',
+          url: 'zk/connect?connectionString=' + this.connectionString,
+        }).then(function (res) {
+          let data = res.data;
+          alert(data);
+          console.error(data);
           this.conflag = data.flag;
-        }, function () {
-          alert('请求失败处理');
-        });
+        }.bind(this));
       },
-      testpost: function () {
-        this.$http.post('http://www.baidu.com').then(function (res) {
-          alert(res.body);
-        }, function () {
-          alert('请求失败处理');
-        });
+      connect: function () {
+        this.$ajax({
+          method: 'get',
+          url: 'zk/connect?connectionString=' + this.connectionString,
+        }).then(function (res) {
+          let data = res.data;
+          console.error(data);
+          this.conflag = data.flag;
+        }.bind(this));
       }
+
     }
   }
 

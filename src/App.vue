@@ -10,37 +10,38 @@
         </a>
 
         <nav class="navbar navbar-static-top">
-          <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-            <span class="sr-only">Toggle navigation</span>
-          </a>
+          <!--<a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">-->
+            <!--<span class="sr-only">Toggle navigation</span>-->
+          <!--</a>-->
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav">
               <li><a data-toggle="modal" data-target="#connectionModal"> 连接zk</a></li>
               <li v-show="!conflag"><a><i class="fa fa-close" style="color: darkred"></i></a></li>
               <li v-show="conflag"><a><i class="fa fa-check-circle-o" style="color: yellow"></i></a></li>
-              <li v-show="!conflag"><a @click="testget"><i class="fa fa-eye" style="color: white"></i></a></li>
+              <!--<li v-show="!conflag"><a @click="testget"><i class="fa fa-eye" style="color: white"></i></a></li>-->
               <li @click="test"><a>test</a></li>
             </ul>
             </ul>
           </div><!-- /.navbar-collapse -->
         </nav>
       </header>
-      <!-- Left side column. contains the logo and sidebar -->
-      <aside class="main-sidebar">
-        <!-- sidebar: style can be found in sidebar.less -->
-        <section class="sidebar">
-          <!-- Sidebar Menu -->
-          <ul class="sidebar-menu" data-widget="tree">
-            <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="#"><i class="fa fa-tag" style="color:forestgreen"></i> <span>Link</span></a>
-            </li>
-          </ul>
-          <!-- /.sidebar-menu -->
-        </section>
-        <!-- /.sidebar -->
-      </aside>
-      <div class="content-wrapper">
+      <!--Left side column. contains the logo and sidebar-->
+      <!--<aside class="main-sidebar">-->
+        <!--&lt;!&ndash; sidebar: style can be found in sidebar.less &ndash;&gt;-->
+        <!--<section class="sidebar">-->
+          <!--&lt;!&ndash; Sidebar Menu &ndash;&gt;-->
+          <!--<ul class="sidebar-menu" data-widget="tree">-->
+            <!--&lt;!&ndash; Optionally, you can add icons to the links &ndash;&gt;-->
+            <!--<li class="active"><a href="#"><i class="fa fa-tag" style="color:forestgreen"></i> <span></span></a>-->
+            <!--</li>-->
+          <!--</ul>-->
+          <!--&lt;!&ndash; /.sidebar-menu &ndash;&gt;-->
+        <!--</section>-->
+        <!--&lt;!&ndash; /.sidebar &ndash;&gt;-->
+      <!--</aside>-->
+      <!--<div class="content-wrapper">-->
+      <div>
         <router-view></router-view>
       </div>
       <!-- 模态框（Modal） -->
@@ -102,7 +103,6 @@
         }).then(function (res) {
           let data = res.data;
           alert(data);
-          console.error(data);
           this.conflag = data.flag;
         }.bind(this));
       },
@@ -112,8 +112,9 @@
           url: 'zk/connect?connectionString=' + this.connectionString,
         }).then(function (res) {
           let data = res.data;
-          console.error(data);
           this.conflag = data.flag;
+          $('#connectionModal').modal('hide');
+          this.$router.push({name: 'hello', params: data});
         }.bind(this));
       }
 

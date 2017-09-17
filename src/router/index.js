@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
+import Tree from '@/components/Tree'
 import Welcome from '@/components/Welcome'
 
 Vue.use(Router)
@@ -12,9 +12,9 @@ export default new Router({
       name: 'welcome',
       component: Welcome
     }, {
-      path: '/hello',
-      name: 'hello',
-      component: Hello
+      path: '/tree',
+      name: 'tree',
+      component: Tree
     }
   ]
 })

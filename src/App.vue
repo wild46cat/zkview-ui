@@ -11,7 +11,7 @@
 
         <nav class="navbar navbar-static-top">
           <!--<a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">-->
-            <!--<span class="sr-only">Toggle navigation</span>-->
+          <!--<span class="sr-only">Toggle navigation</span>-->
           <!--</a>-->
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="navbar-collapse">
@@ -28,20 +28,20 @@
       </header>
       <!--Left side column. contains the logo and sidebar-->
       <!--<aside class="main-sidebar">-->
-        <!--&lt;!&ndash; sidebar: style can be found in sidebar.less &ndash;&gt;-->
-        <!--<section class="sidebar">-->
-          <!--&lt;!&ndash; Sidebar Menu &ndash;&gt;-->
-          <!--<ul class="sidebar-menu" data-widget="tree">-->
-            <!--&lt;!&ndash; Optionally, you can add icons to the links &ndash;&gt;-->
-            <!--<li class="active"><a href="#"><i class="fa fa-tag" style="color:forestgreen"></i> <span></span></a>-->
-            <!--</li>-->
-          <!--</ul>-->
-          <!--&lt;!&ndash; /.sidebar-menu &ndash;&gt;-->
-        <!--</section>-->
-        <!--&lt;!&ndash; /.sidebar &ndash;&gt;-->
+      <!--&lt;!&ndash; sidebar: style can be found in sidebar.less &ndash;&gt;-->
+      <!--<section class="sidebar">-->
+      <!--&lt;!&ndash; Sidebar Menu &ndash;&gt;-->
+      <!--<ul class="sidebar-menu" data-widget="tree">-->
+      <!--&lt;!&ndash; Optionally, you can add icons to the links &ndash;&gt;-->
+      <!--<li class="active"><a href="#"><i class="fa fa-tag" style="color:forestgreen"></i> <span></span></a>-->
+      <!--</li>-->
+      <!--</ul>-->
+      <!--&lt;!&ndash; /.sidebar-menu &ndash;&gt;-->
+      <!--</section>-->
+      <!--&lt;!&ndash; /.sidebar &ndash;&gt;-->
       <!--</aside>-->
       <!--<div class="content-wrapper">-->
-      <div>
+      <div style="background-color: #444;">
         <router-view></router-view>
       </div>
       <!-- 模态框（Modal） -->
@@ -62,7 +62,7 @@
                 <div class="box-body">
                   <div class="form-group">
                     <label>请输入zk连接字符串</label>
-                    <input type="text" v-model="connectionString" class="form-control" placeholder="请输入zk连接字符串"/>
+                    <input @keyup.enter="connect" type="text" v-model="connectionString" class="form-control" placeholder="请输入zk连接字符串"/>
                   </div>
                 </div>
               </form>
@@ -114,7 +114,7 @@
           let data = res.data;
           this.conflag = data.flag;
           $('#connectionModal').modal('hide');
-          this.$router.push({name: 'hello', params: data});
+          this.$router.push({name: 'tree', query: data});
         }.bind(this));
       }
 

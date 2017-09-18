@@ -9,7 +9,7 @@ var chalk = require('chalk')
 var webpack = require('webpack')
 var config = require('../config')
 var webpackConfig = require('./webpack.prod.conf')
-var VueResource = request('vue-resource')
+var VueResource = require('vue-resource')
 
 var spinner = ora('building for production...')
 spinner.start()

@@ -124,14 +124,14 @@
       <div class="col-lg-6 col-md-6">
         <!--显示当前节点值-->
         <form>
-          <h4 style="color: #ccc;">节点值:</h4>
-          <div class="row">
-            <textarea class="from-control col-lg-11 col-md-11" rows="20"
-                      style="background-color: #ccc;" v-model="nowvalue"></textarea>
-          </div>
-          <button @click="savenode" class="btn btn-primary col-lg-offset-5 col-md-offset-5" style="margin-top: 20px;">
+          <button @click="savenode" class="btn btn-primary"
+                  style="margin: 20px 0 20px 0;">
             保存
           </button>
+          <div class="row" style="margin-bottom: 20px;">
+            <textarea class="from-control col-lg-11 col-md-11" rows="35"
+                      style="background-color: #ccc;" v-model="nowvalue"></textarea>
+          </div>
         </form>
       </div>
       <!--<button class="btn btn-primary" @click="testparams">test</button>-->

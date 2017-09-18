@@ -20,7 +20,7 @@
               <li v-show="!conflag"><a><i class="fa fa-close" style="color: darkred"></i></a></li>
               <li v-show="conflag"><a><i class="fa fa-check-circle-o" style="color: yellow"></i></a></li>
               <!--<li v-show="!conflag"><a @click="testget"><i class="fa fa-eye" style="color: white"></i></a></li>-->
-              <li @click="test"><a>test</a></li>
+              <li @click="test"><a></a></li>
             </ul>
             </ul>
           </div><!-- /.navbar-collapse -->

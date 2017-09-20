@@ -13,7 +13,7 @@ import 'bootstrap/dist/js/bootstrap.min'
 import 'admin-lte/dist/css/AdminLTE.min.css'
 import 'admin-lte/dist/css/skins/_all-skins.min.css'
 import 'admin-lte/dist/js/app'
-import 'admin-lte/dist/js/adminlte'
+// import 'admin-lte/dist/js/adminlte'
 
 Vue.config.productionTip = false;
 Vue.use(VueResource);

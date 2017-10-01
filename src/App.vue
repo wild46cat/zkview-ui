@@ -111,9 +111,10 @@
           method: 'get',
           url: 'zk/connect?connectionString=' + this.connectionString,
         }).then(function (res) {
-          let data = res.data;
+          let data ={};
           this.conflag = data.flag;
           $('#connectionModal').modal('hide');
+          data.connectionString = this.connectionString;
           this.$router.push({name: 'tree', query: data});
         }.bind(this));
       }

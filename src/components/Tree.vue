@@ -1,7 +1,11 @@
 <template>
   <div>
+    <!--<div class="row" style="color: whitesmoke;-->
+      <!--<div style="margin-top: 50px;">{{nodeList}}</div>-->
+      <!--<div style="color: white;">{{firstLevelNodes}}</div>-->
+    <!--</div>-->
     <div class="row">
-      <div class="col-lg-6 col-md-6" style="overflow: auto;">
+      <div class="col-md-6" style="margin-top: 50px;">
         <section>
           <li class="treeview">
             <a><i class="fa fa-plus-square-o"></i>
@@ -27,7 +31,7 @@
                       <i v-else="nodel2.childrennode.length > 0" class="fa fa-plus-square-o"
                          @click="collapsenode(nodel2)"
                          v-show="nodel2.childrennode.length > 0 || nodel2.childrennodebak.length > 0"></i>
-                      <span @click='getnodedata(nodel2)'>{{nodel2.name}}</span>
+                      <span @click='getnodedata(nodel2)'>{{nodel2.formatname}}</span>
                       <span class="pull-right-container"></span>
                     </a>
                     <ul class="treeview-menu" v-for="nodel3 in nodel2.childrennode">
@@ -39,7 +43,7 @@
                           <i v-else="nodel3.childrennode.length > 0" class="fa fa-plus-square-o"
                              @click="collapsenode(nodel3)"
                              v-show="nodel3.childrennode.length > 0 || nodel3.childrennodebak.length > 0"></i>
-                          <span @click='getnodedata(nodel3)'>{{nodel3.name}}</span>
+                          <span @click='getnodedata(nodel3)'>{{nodel3.formatname}}</span>
                           <span class="pull-right-container"></span>
                         </a>
                       </li>
@@ -52,7 +56,7 @@
                             <i v-else="nodel4.childrennode.length > 0" class="fa fa-plus-square-o"
                                @click="collapsenode(nodel4)"
                                v-show="nodel4.childrennode.length > 0 || nodel4.childrennodebak.length > 0"></i>
-                            <span @click='getnodedata(nodel4)'>{{nodel4.name}}</span>
+                            <span @click='getnodedata(nodel4)'>{{nodel4.formatname}}</span>
                             <span class="pull-right-container"></span>
                           </a>
                         </li>
@@ -65,7 +69,7 @@
                               <i v-else="nodel5.childrennode.length > 0" class="fa fa-plus-square-o"
                                  @click="collapsenode(nodel5)"
                                  v-show="nodel5.childrennode.length > 0 || nodel5.childrennodebak.length > 0"></i>
-                              <span @click='getnodedata(nodel5)'>{{nodel5.name}}</span>
+                              <span @click='getnodedata(nodel5)'>{{nodel5.formatname}}</span>
                               <span class="pull-right-container"></span>
                             </a>
                           </li>
@@ -78,7 +82,7 @@
                                 <i v-else="nodel6.childrennode.length > 0" class="fa fa-plus-square-o"
                                    @click="collapsenode(nodel6)"
                                    v-show="nodel6.childrennode.length > 0 || nodel6.childrennodebak.length > 0"></i>
-                                <span @click='getnodedata(nodel6)'>{{nodel6.name}}</span>
+                                <span @click='getnodedata(nodel6)'>{{nodel6.formatname}}</span>
                                 <span class="pull-right-container"></span>
                               </a>
                             </li>
@@ -91,7 +95,7 @@
                                   <i v-else="nodel7.childrennode.length > 0" class="fa fa-plus-square-o"
                                      @click="collapsenode(nodel7)"
                                      v-show="nodel7.childrennode.length > 0 || nodel7.childrennodebak.length > 0"></i>
-                                  <span @click='getnodedata(nodel7)'>{{nodel7.name}}</span>
+                                  <span @click='getnodedata(nodel7)'>{{nodel7.formatname}}</span>
                                   <span class="pull-right-container"></span>
                                 </a>
                               </li>
@@ -104,7 +108,7 @@
                                     <i v-else="nodel8.childrennode.length > 0" class="fa fa-plus-square-o"
                                        @click="collapsenode(nodel8)"
                                        v-show="nodel8.childrennode.length > 0 || nodel8.childrennodebak.length > 0"></i>
-                                    <span @click='getnodedata(nodel8)'>{{nodel8.name}}</span>
+                                    <span @click='getnodedata(nodel8)'>{{nodel8.formatname}}</span>
                                     <span class="pull-right-container"></span>
                                   </a>
                                 </li>
@@ -121,26 +125,24 @@
           </li>
         </section>
       </div>
-      <div class="col-lg-6 col-md-6">
-        <!--显示当前节点值-->
-        <form>
-          <button @click="savenode" class="btn btn-primary"
-                  style="margin: 20px 0 20px 0;">
-            保存
-          </button>
-          <div class="row" style="margin-bottom: 20px;">
-            <textarea class="from-control col-lg-11 col-md-11" rows="35"
-                      style="background-color: #ccc;" v-model="nowvalue"></textarea>
-          </div>
-        </form>
-      </div>
       <!--<button class="btn btn-primary" @click="testparams">test</button>-->
       <!--<div>{{nodeList}}</div>-->
       <!--<br/>-->
       <!--<div>{{nodes}}</div>-->
       <!--<br/>-->
       <!--<div style="color: white;">{{firstLevelNodes}}</div>-->
+      <div class="col-md-6 positionfixed">
+        <!--显示当前节点值-->
+        <button @click="savenode" class="btn btn-primary">
+          保存
+        </button>
+        <div>
+            <textarea class="from-control" rows="30"
+                      style="background-color: #ccc;width: 90%;" v-model="nowvalue"></textarea>
+        </div>
+      </div>
     </div>
+
   </div>
 </template>
 
@@ -186,6 +188,7 @@
           } else {
             nodeSplitArray[level] = '';
             this.nodes.push({
+              formatname: node.substr(node.lastIndexOf("/") + 1, node.length),
               name: node,
               parentnode: nodeSplitArray.join('/').substr(0, nodeSplitArray.join('/').length - 1),
               level: level,
@@ -194,7 +197,7 @@
             });
           }
         }
-        let toDo = [{name: "/", parentnode: "", level: 0, childrennode: [], childrennodebak: []}];
+        let toDo = [{formatname: "/", name: "/", parentnode: "", level: 0, childrennode: [], childrennodebak: []}];
         for (let node of this.nodes) {
           toDo.push(node);
         }
@@ -260,5 +263,12 @@
 <style>
   li {
     list-style-type: none;
+  }
+
+  .positionfixed {
+    position: absolute;
+    position: fixed;
+    top: 50px;
+    right: 0px;
   }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img src="../assets/logo.png" style="height: 50%;width: 50%;margin-left: 20%"/>
+      <img src="../assets/logo.png" style="height: 35%;width: 35%;margin-left: 20%;margin-top: 50px;"/>
   </div>
 </template>
 

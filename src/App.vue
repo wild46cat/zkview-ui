@@ -41,7 +41,7 @@
       <!--&lt;!&ndash; /.sidebar &ndash;&gt;-->
       <!--</aside>-->
       <!--<div class="content-wrapper">-->
-      <div style="background-color: #444;">
+      <div>
         <router-view></router-view>
       </div>
       <!-- 模态框（Modal） -->
@@ -124,4 +124,14 @@
 </script>
 
 <style>
+  body{
+    background-color: #444;
+  }
+  .main-header {
+    position: absolute;
+    max-height: 100px;
+    z-index: 1030;
+    position: fixed;
+    width: 100%;
+  }
 </style>

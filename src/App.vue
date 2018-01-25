@@ -88,12 +88,12 @@
       return {
         msg: 'Welcome to Your Vue.js App',
         conflag: false,
-        connectionString: '192.168.0.66:2181'
+        connectionString: 'localhost:2181'
       }
     },
     methods: {
       test: function () {
-        alert(this.GLOBAL.BASE_URL);
+        alert(BASE_URL);
         alert(this.$ajax.defaults.baseURL);
       },
       testget: function () {
@@ -111,7 +111,9 @@
           method: 'get',
           url: 'zk/connect?connectionString=' + this.connectionString,
         }).then(function (res) {
+          console.log(res);
           let data ={};
+          data = res.data;
           this.conflag = data.flag;
           $('#connectionModal').modal('hide');
           data.connectionString = this.connectionString;

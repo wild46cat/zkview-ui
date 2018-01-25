@@ -6,7 +6,7 @@ import router from './router'
 import VueResource from 'vue-resource'
 import axios from 'axios'
 import $ from 'jquery'
-import global_ from '../static/config/global'
+// import global_ from '../static/config/global'
 import 'font-awesome/css/font-awesome.min.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min'
@@ -17,8 +17,8 @@ import 'admin-lte/dist/js/app'
 
 Vue.config.productionTip = false;
 Vue.use(VueResource);
-Vue.prototype.GLOBAL = global_;
-axios.defaults.baseURL = global_.BASE_URL;
+// Vue.prototype.GLOBAL = global_;
+axios.defaults.baseURL = BASE_URL;
 Vue.prototype.$ajax = axios;
 
 /* eslint-disable no-new */

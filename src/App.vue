@@ -128,7 +128,7 @@
 
 <style>
   body{
-    background-color: #444;
+    background-color: #444 !important;
   }
   .main-header {
     position: absolute;

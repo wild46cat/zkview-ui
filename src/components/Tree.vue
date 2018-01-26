@@ -419,8 +419,8 @@
   }
 
   .positionfixed {
-    position: absolute;
-    position: fixed;
+    position: absolute !important;
+    position: fixed !important;
     top: 50px;
     right: 0px;
   }

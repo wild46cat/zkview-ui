@@ -127,14 +127,4 @@
 </script>
 
 <style>
-  body{
-    background-color: #444 !important;
-  }
-  .main-header {
-    position: absolute;
-    max-height: 100px;
-    z-index: 1030;
-    position: fixed;
-    width: 100%;
-  }
 </style>

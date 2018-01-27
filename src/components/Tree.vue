@@ -5,7 +5,7 @@
     <!--<div style="color: white;">{{firstLevelNodes}}</div>-->
     <!--</div>-->
     <div class="row">
-      <div class="col-md-6" style="margin-top: 50px;">
+      <div class="col-md-6">
         <section>
           <li class="treeview">
             <a><i class="fa fa-plus-square-o"></i>
@@ -421,7 +421,6 @@
   .positionfixed {
     position: absolute !important;
     position: fixed !important;
-    top: 50px;
     right: 0px;
   }
 </style>

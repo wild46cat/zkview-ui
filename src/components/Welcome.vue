@@ -1,6 +1,6 @@
 <template>
   <div>
-      <img src="../assets/logo.png" style="height: 35%;width: 35%;margin-left: 20%;margin-top: 50px;"/>
+    <img src="../assets/zookeeperman.png" class="zkman"/>
   </div>
 </template>
 
@@ -16,5 +16,11 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
+  .zkman {
+    height: 35%;
+    width: 35%;
+    margin-left: 20%;
+    margin-top:5px;
+  }
 </style>

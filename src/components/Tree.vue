@@ -218,11 +218,13 @@
               <div class="box-body">
                 <div class="form-group">
                   <label>名称</label>
-                  <input type="text" @keyup.enter="addnode" v-model="newnodepath" class="form-control" placeholder="请输入节点名称"/>
+                  <input type="text" @keyup.enter="addnode" v-model="newnodepath" class="form-control"
+                         placeholder="请输入节点名称"/>
                 </div>
                 <div class="form-group">
                   <label>值</label>
-                  <input type="text" @keyup.enter="addnode" v-model="newnodevalue" class="form-control" placeholder="请输入节点值"/>
+                  <input type="text" @keyup.enter="addnode" v-model="newnodevalue" class="form-control"
+                         placeholder="请输入节点值"/>
                 </div>
               </div>
             </form>
@@ -326,6 +328,13 @@
               this.firstLevelNodes.push(node);
             }
           }
+          //把第一层设置为隐藏
+          for (let i = 0; i < this.firstLevelNodes.length; i++) {
+              let obj = this.firstLevelNodes[i];
+              while(obj.childrennode.length){
+                  obj.childrennodebak.push(obj.childrennode.shift());
+              }
+          }
         }.bind(this));
       },
       getparams: function () {
@@ -391,22 +400,25 @@
         $('#newNodeModal').modal('show');
       },
       deletenode: function (nodename) {
-        this.$ajax({
-          method: 'post',
-          url: 'zk/deleteNode',
-          data: {
-            nodePath: nodename,
-            nodeValue: ""
-          }
-        }).then(function (res) {
-          let data = res.data;
-          if (data) {
-            alert('删除成功');
-            this.freshallnode();
-          } else {
-            alert('删除失败,请检查是否存在子节点')
-          }
-        }.bind(this));
+        if (window.confirm('你确定要删除节点吗？')) {
+          //alert("确定");
+          this.$ajax({
+            method: 'post',
+            url: 'zk/deleteNode',
+            data: {
+              nodePath: nodename,
+              nodeValue: ""
+            }
+          }).then(function (res) {
+            let data = res.data;
+            if (data) {
+              alert('删除成功');
+              this.freshallnode();
+            } else {
+              alert('删除失败,请检查是否存在子节点')
+            }
+          }.bind(this));
+        }
       }
     }
   }
